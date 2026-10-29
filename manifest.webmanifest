@@ -1,0 +1,9 @@
+{
+  "name": "Faenas",
+  "short_name": "Faenas",
+  "description": "Tareas de casa compartidas, con puntos y horarios.",
+  "display": "standalone",
+  "background_color": "#f6f3ee",
+  "theme_color": "#f6f3ee",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

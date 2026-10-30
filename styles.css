@@ -23,6 +23,15 @@
   --accent: #ff7a52; --accent-soft: #3a2620; --ok: #34c477; --danger: #fb923c;
   --shadow: none; color-scheme: dark;
 }
+/* Color por casa (app.js → setCasa) */
+:root[data-casa="papa"] { --accent: #2563eb; --accent-soft: #dbeafe; }
+:root[data-casa="mama"] { --accent: #db2777; --accent-soft: #fce7f3; }
+@media (prefers-color-scheme: dark) {
+  :root[data-casa="papa"]:not([data-theme="light"]) { --accent: #60a5fa; --accent-soft: #1c2a44; }
+  :root[data-casa="mama"]:not([data-theme="light"]) { --accent: #f472b6; --accent-soft: #3a1f2e; }
+}
+:root[data-theme="dark"][data-casa="papa"] { --accent: #60a5fa; --accent-soft: #1c2a44; }
+:root[data-theme="dark"][data-casa="mama"] { --accent: #f472b6; --accent-soft: #3a1f2e; }
 
 * { box-sizing: border-box; }
 body {

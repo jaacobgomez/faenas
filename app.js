@@ -8,6 +8,14 @@ const $toast = document.getElementById('toast');
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
+// Color por casa (styles.css → [data-casa]): azul en la de papá, rosa en la de mamá.
+const setCasa = (name) => {
+  const n = String(name ?? '').toLowerCase();
+  const casa = n.includes('papá') ? 'papa' : n.includes('mamá') ? 'mama' : '';
+  if (casa) document.documentElement.dataset.casa = casa;
+  else delete document.documentElement.dataset.casa;
+};
+
 // Fechas como 'AAAA-MM-DD', calculadas en UTC para que no bailen con el horario de verano.
 const parse = (s) => new Date(s + 'T00:00:00Z');
 const fmt = (d) => d.toISOString().slice(0, 10);
@@ -337,6 +345,7 @@ const VIEWS = { hoy: ['🏠', 'Hoy', viewHoy], semana: ['📅', 'Semana', viewSe
 
 function render() {
   if (!S.data) return;
+  setCasa(S.data.house.name);
   const me = member(S.data.me);
   const others = Object.entries(store.houses).filter(([slug, h]) => slug !== S.slug && h.token);
   $app.innerHTML = `
@@ -357,6 +366,7 @@ function render() {
 
 function renderLogin() {
   const L = S.login;
+  setCasa(L?.house);
   if (!S.slug || !L) {
     const known = Object.entries(store.houses);
     $app.innerHTML = `

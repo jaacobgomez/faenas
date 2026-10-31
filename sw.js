@@ -1,6 +1,7 @@
 // Red primero; si no hay conexión, la última copia guardada de la app.
-const CACHE = 'faenas-v1';
-const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'config.js', 'manifest.webmanifest', 'icon.svg'];
+const CACHE = 'faenas-v2';
+const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'config.js', 'manifest.webmanifest', 'icon.svg',
+  'icon-180.png', 'icon-512.png', 'fonts/figtree.woff2', 'fonts/fraunces.woff2'];
 
 self.addEventListener('install', (e) => e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL))));
 self.addEventListener('activate', (e) => e.waitUntil(
